@@ -1,0 +1,96 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* Core colors - Dark AI theme */
+    --background: 240 15% 6%;           /* Deep charcoal #0B0B0F */
+    --foreground: 0 0% 100%;            /* Pure white */
+
+    --card: 240 12% 10%;                /* Slightly lighter card */
+    --card-foreground: 0 0% 100%;
+
+    --popover: 240 12% 10%;
+    --popover-foreground: 0 0% 100%;
+
+    --primary: 217 80% 55%;             /* Electric blue #2563EB */
+    --primary-foreground: 0 0% 100%;
+    --primary-glow: 217 80% 65%;        /* Lighter blue for glow */
+
+    --secondary: 240 10% 12%;           /* Darker gray */
+    --secondary-foreground: 0 0% 100%;
+
+    --accent: 171 100% 46%;             /* Neon teal #00E8C6 */
+    --accent-foreground: 240 15% 6%;
+    --accent-glow: 171 100% 56%;        /* Lighter teal for glow */
+
+    --muted: 240 10% 15%;
+    --muted-foreground: 0 0% 65%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 240 10% 20%;
+    --input: 240 10% 15%;
+    --ring: 217 80% 55%;
+
+    --radius: 0.75rem;
+
+    /* Gradients */
+    --gradient-hero: linear-gradient(135deg, hsl(240 15% 6%) 0%, hsl(217 60% 12%) 100%);
+    --gradient-accent: linear-gradient(135deg, hsl(217 80% 55%) 0%, hsl(171 100% 46%) 100%);
+    --gradient-card: linear-gradient(180deg, hsl(240 12% 12%) 0%, hsl(240 12% 8%) 100%);
+    
+    /* Shadows with glow effects */
+    --shadow-glow-primary: 0 0 40px hsl(217 80% 55% / 0.3);
+    --shadow-glow-accent: 0 0 30px hsl(171 100% 46% / 0.4);
+    --shadow-card: 0 10px 40px hsl(240 15% 3% / 0.5);
+    
+    /* Transitions */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+
+  /* Custom animations */
+  @keyframes fade-in-up {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes glow-pulse {
+    0%, 100% {
+      box-shadow: 0 0 20px hsl(var(--primary) / 0.3);
+    }
+    50% {
+      box-shadow: 0 0 40px hsl(var(--primary) / 0.6);
+    }
+  }
+
+  .animate-fade-in-up {
+    animation: fade-in-up 0.6s ease-out;
+  }
+
+  .animate-glow-pulse {
+    animation: glow-pulse 2s ease-in-out infinite;
+  }
+}
